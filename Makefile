@@ -13,3 +13,5 @@ lint:
 lint-fix:
 	composer exec phpcbf --verbose -- --standard=PSR12 src bin
 
+test:
+	composer exec phpunit --verbose

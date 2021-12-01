@@ -1,9 +1,9 @@
 <?php
 
+namespace Todo\Tests;
+
 use function Todo\Cli\addTodo;
 use function Todo\Cli\deleteTodo;
-
-namespace Todo\Tests;
 
 class TodoTest extends \PHPUnit\Framework\TestCase
 {
@@ -36,5 +36,20 @@ class TodoTest extends \PHPUnit\Framework\TestCase
         ];
 
         $this->assertEquals($expectedTodoList, $updatedTodoList);
+    }
+
+    public function test_delete_todo_by_error_index(): void
+    {
+        $todoList = [
+            'Помыть посуду',
+            'Помыть посуду 2',
+            'Помыть посуду 3',
+        ];
+
+        $index = 100;
+
+        $updatedTodoList = deleteTodo($index, $todoList);
+
+        $this->assertEquals($todoList, $updatedTodoList);
     }
 }

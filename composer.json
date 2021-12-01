@@ -15,7 +15,10 @@
     "autoload": {
         "files": [
             "src/Cli.php"
-        ]
+        ],
+        "psr-4": {
+            "Todo\\Tests\\": "tests"
+        }
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.6",
