@@ -1,0 +1,13 @@
+{
+    "name": "funkylen/todocli",
+    "description": "PHP ToDo CLI App",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "funkylen",
+            "email": "funkylen@gmail.com"
+        }
+    ],
+    "require": {}
+}
