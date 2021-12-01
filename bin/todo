@@ -1,0 +1,12 @@
+#!/usr/bin/env php
+
+<?php
+
+$autoloadPath = '/../vendor/autoload.php';
+
+if (file_exists($autoloadPath)) {
+    require_once $autoloadPath;
+}
+
+Todo\Cli\start();
+
