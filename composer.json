@@ -9,5 +9,10 @@
             "email": "funkylen@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "files": [
+            "src/Cli.php"
+        ]
+    }
 }
