@@ -2,21 +2,20 @@
 
 namespace Todo\Storage;
 
+use function config\app\getStorageDriver;
+use function config\app\getStorageFilePath;
+
 const AVAILABLE_DRIVERS = [
     'filesystem',
 ];
 
-function getDriver(): string
-{
-    return $GLOBALS['appconfig']['STORAGE_ADAPTER'];
-}
-
 function getTodoList(): array
 {
-    $driver = getDriver(); 
+    $driver = getStorageDriver(); 
 
     if ($driver === 'filesystem') {
-        return \Todo\Storages\FilesystemStorage\getTodoList();
+        $filePath = getStorageFilePath();
+        return \Todo\Storages\FilesystemStorage\getTodoList($filePath);
     }
 
     throw new \Exception('Unknown driver');
@@ -24,10 +23,11 @@ function getTodoList(): array
 
 function saveTodoList(array $todoList): void
 {
-    $driver = getDriver();
+    $driver = getStorageDriver();
 
     if ($driver === 'filesystem') {
-        \Todo\Storages\FilesystemStorage\saveTodoList($todoList);
+        $filePath = getStorageFilePath();
+        \Todo\Storages\FilesystemStorage\saveTodoList($todoList, $filePath);
         return;
     }
 

@@ -2,17 +2,7 @@
 
 namespace Todo\Storages\FilesystemStorage;
 
-function getFilePath(): string
-{
-    return $GLOBALS['appconfig']['STORAGE_FILEPATH'];
-}
-
-function getTodoList(): array
-{
-    return getTodoListFromFile(getFilepath());
-}
-
-function getTodoListFromFile(string $filePath): array
+function getTodoList(string $filePath): array
 {
     checkFileAndCreateIfNotExists($filePath);
 
@@ -29,12 +19,7 @@ function checkFileAndCreateIfNotExists(string $filePath): void
     }
 }
 
-function saveTodoList(array $todoList): void
-{
-    saveTodoListInFile($todoList, getFilePath());
-}
-
-function saveTodoListInFile(array $todoList, string $filePath)
+function saveTodoList(array $todoList, string $filePath)
 {
     checkFileAndCreateIfNotExists($filePath);
 

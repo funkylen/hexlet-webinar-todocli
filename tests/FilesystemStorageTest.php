@@ -2,25 +2,27 @@
 
 namespace Todo\Tests;
 
-use function Todo\Storages\FilesystemStorage\getTodoListFromFile;
-use function Todo\Storages\FilesystemStorage\saveTodoListInFile;
+use function config\app\getStorageFilePath;
+use function Todo\Storages\FilesystemStorage\getTodoList;
+use function Todo\Storages\FilesystemStorage\saveTodoList;
 
 class FilesystemStorageTest extends \PHPUnit\Framework\TestCase
 {
-    private $tempFilePath;
+    private $filePath;
 
     public function setUp(): void
     {
-        $this->tempFilePath  = '/tmp/__tempjsonfile.json';
-        touch($this->tempFilePath);
+        $this->filePath  = getStorageFilePath();
+        var_dump($this->filePath);
+        touch($this->filePath);
     }
 
     public function tearDown(): void
     {
-        unlink($this->tempFilePath);
+        unlink($this->filePath);
     }
 
-    public function test_get_todo_list_from_file(): void
+    public function test_get_todo_list(): void
     { 
         $fixturePath = __DIR__ . '/fixtures/todo.json';
 
@@ -30,10 +32,10 @@ class FilesystemStorageTest extends \PHPUnit\Framework\TestCase
             'Task3',
         ];
 
-        $this->assertEquals($todoList, getTodoListFromFile($fixturePath));
+        $this->assertEquals($todoList, getTodoList($fixturePath));
     }
 
-    public function test_save_todo_list_in_file(): void
+    public function test_save_todo_list(): void
     {
         $todoList = [
             'Task1',
@@ -41,8 +43,8 @@ class FilesystemStorageTest extends \PHPUnit\Framework\TestCase
             'Task3',
         ];
 
-        saveTodoListInFile($todoList, $this->tempFilePath);
+        saveTodoList($todoList, $this->filePath);
 
-        $this->assertJsonStringEqualsJsonFile($this->tempFilePath, json_encode($todoList));
+        $this->assertJsonStringEqualsJsonFile($this->filePath, json_encode($todoList));
     }
 }

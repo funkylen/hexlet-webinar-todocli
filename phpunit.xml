@@ -20,4 +20,9 @@
             <directory suffix=".php">src</directory>
         </include>
     </coverage>
+
+    <php>
+        <env name="STORAGE_ADAPTER" value="filesystem"/>
+        <env name="STORAGE_FILEPATH" value="/tmp/tempjsonfile.json"/>
+    </php>
 </phpunit>

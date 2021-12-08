@@ -7,14 +7,6 @@ use function Todo\Todo\deleteTodo;
 
 class TodoTest extends \PHPUnit\Framework\TestCase
 {
-    public function setUp(): void
-    {
-        $GLOBALS['appconfig'] = [
-            'STORAGE_ADAPTER' => 'filesystem',
-            'STORAGE_FILEPATH' => '/tmp/__tempjsonfile.json',
-        ];
-    }
-
     public function test_add_todo(): void
     {
         $todoList = [];

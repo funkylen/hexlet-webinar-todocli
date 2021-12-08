@@ -17,7 +17,8 @@
             "src/Cli.php",
             "src/Todo.php",
             "src/Storage.php",
-            "src/Storages/FilesystemStorage.php"
+            "src/Storages/FilesystemStorage.php",
+            "config/app.php"
         ],
         "psr-4": {
             "Todo\\Tests\\": "tests"

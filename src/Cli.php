@@ -39,11 +39,11 @@ function start(): void
 
 function showTodoList(array $todoList): void
 {
-        line('  --- Задачи ---');
+    line('  --- Задачи ---');
     foreach ($todoList as $index => $todo) {
         $number = $index + 1;
         line("  {$number}. {$todo}");
     }
-        line('  --- Конец списка ---');
-        line();
+    line('  --- Конец списка ---');
+    line();
 }
