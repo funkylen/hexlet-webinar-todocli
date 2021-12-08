@@ -8,5 +8,10 @@ if (file_exists($autoloadPath)) {
     require_once $autoloadPath;
 }
 
+$GLOBALS['appconfig'] = [
+    'STORAGE_ADAPTER' => 'filesystem',
+    'STORAGE_FILEPATH' => __DIR__ . '/../storage/todo.json',
+];
+
 Todo\Cli\start();
 

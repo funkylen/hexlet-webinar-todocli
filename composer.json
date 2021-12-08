@@ -15,7 +15,9 @@
     "autoload": {
         "files": [
             "src/Cli.php",
-            "src/Todo.php"
+            "src/Todo.php",
+            "src/Storage.php",
+            "src/Storages/FilesystemStorage.php"
         ],
         "psr-4": {
             "Todo\\Tests\\": "tests"
