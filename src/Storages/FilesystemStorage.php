@@ -25,6 +25,7 @@ function checkFileAndCreateIfNotExists(string $filePath): void
 {
     if (!file_exists($filePath)) {
         touch($filePath);
+        file_put_contents($filePath, '[]');
     }
 }
 
